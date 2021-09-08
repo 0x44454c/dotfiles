@@ -1,6 +1,9 @@
 " -------------------------------------
-noremap ;; ;
-map ; :
+nnoremap ;; ;
+nmap ; :
+let mapleader="'"
+" inoremap  <Esc>
+vnoremap . :norm.<CR>
 
 set nocompatible
 filetype off
@@ -65,7 +68,7 @@ Plugin 'vim-autoformat/vim-autoformat'
 call vundle#end()
 " -------------------------- vundle#end
 
-" -------------------------------------
+" -----------------------------------
 " reset
 " -------------------------------------
 set encoding=utf-8
@@ -89,11 +92,14 @@ set autoread
 set autowrite
 set nobackup
 set nowritebackup
+set noswapfile
+set spelllang=en_us
+set ttimeoutlen=0
 
 set background=dark
 " set titlestring=%(%F%)%a\ -\ VIM%(\ %M%)
 " set t_Co=16
-" set t_Co=256
+set t_Co=256
 hi CursorLineNr cterm=bold
 
 " -------------------------------------
@@ -151,7 +157,7 @@ let g:javascript_plugin_jsdoc=1 " jsdoc plugin
 " nnoremap  :w<CR>
 imap  <esc>:w<CR>
 imap  <esc>:u<CR>
-" imap <C-s-z> <esc><C-r> not working
+imap <C-S-z> <esc><C-r> not working
 nmap  :q<CR>
 nmap  :w<CR>
 nnoremap <leader><space> :b#<CR>
@@ -160,11 +166,13 @@ nnoremap <leader>e :e<Space>
 " inoremap ii <Esc>
 nnoremap ,r :vertical res
 noremap <F3> :Autoformat<CR>
+nnoremap<leader>s :set spell!<CR>
 
 " -------------------------------------------------------------------
 " Mapping Left and Right arrow for presentatio mode
 " -------------------------------------------------------------------
 autocmd BufNewFile,BufRead *.vp call ViPresentation()
+
 function ViPresentation()
   nnoremap <buffer> <Right> :n<CR>
   nnoremap <buffer> <Left> :N<CR>
